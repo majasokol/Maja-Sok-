@@ -3,3 +3,27 @@ ludzkiego zachowania. Jego poziom zaangażowania jest znacznie wyższy w porówn
 
 chatbot udający człowieka:
 - udziela żartów, kontynuuje zabawny sposób rozmowy
+- przytacza cytaty z wcześniejszych wypowiedzi lub cytaty znanych osób
+- płynnie potrafi zacząć rozmowę nawiązując do słów kluczowych
+- jest w stanie zadawać wiele pytań w celu podtrzymania tematu lub jego rozwinięcia
+- jest w stanie wrócić do wcześniej zaczętych tematów i je kontynuować
+- jest w stanie zadwać pytania z twoich wypowiedzi
+- może wymijająco i naturalnie odpowiadać w celu uniknięcia odpowiedzi
+- często zmienia temat rozmowy w celu jej rozwoju
+- może mieć problemy z utrzymaniem jednego wątku
+
+chatbot "służący"
+- nie udziela żartów,powściągliwy
+- jest w stanie przytoczyć cytaty znanych osób
+- odpowiadaa dokładnie na pytania ze słowami kluczowymi
+- zadaje pytania mające na celu tylko i wyłącznie pomoc użytkownikowi
+- jest w stanie wrócić do wcześniej zaczętych tematów
+- pytania będą miały jasny cel pomocy użytkownikowi
+- może odpowiadać wymijająco, gdyż dąży do konkretnego celu
+- nie zmienia tematów rozmów
+- nie ma problemu z utrzymaniem jednego wątku, na celu ma pomoc użytkownikowi
+
+PRZYKŁADOWA ROZMOWA
+
+bot udający człowieka: Czym jest dla ciebie miłóść?
+bot asystent: Miłość to złożona mieszanka uczuć, myśli i zachowań, które wpływają na całokształt relacji między dwojgiem bliskich sobie osób.
