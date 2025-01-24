@@ -14,8 +14,8 @@ kobieta(anna).
 
 przodek(X, Y) :- ojciec(X, Y).
 przodek(X, Y) :- matka(X, Y).
-przodek(X, Y) :- ojciec(Z, Y), przodek(X, Z). % Poprawka: Zmieniono kolejność argumentów
-przodek(X, Y) :- matka(Z, Y), przodek(X, Z).  % Poprawka: Zmieniono kolejność argumentów
+przodek(X, Y) :- ojciec(Z, Y), przodek(X, Z).
+przodek(X, Y) :- matka(Z, Y), przodek(X, Z). 
 
 brat(X, Y) :- ojciec(O, X), ojciec(O, Y), X \= Y, mezczyzna(X).
 
