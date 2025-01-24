@@ -1,5 +1,7 @@
 % SWISH
 
+:- dynamic produkt/1.
+:- dynamic produkt/2.
 :- dynamic produkt/3.
 
 produkt(tv, 10, sektor_a).
