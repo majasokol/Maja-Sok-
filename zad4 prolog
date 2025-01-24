@@ -1,1 +1,37 @@
+% SWISH
 
+miasto(warszawa).
+miasto(krakow).
+miasto(poznan).
+miasto(wroclaw).
+
+droga(warszawa, krakow, 4).
+droga(krakow, poznan, 3).
+droga(warszawa, poznan, 7).
+droga(warszawa, wroclaw, 5).
+droga(wroclaw, poznan, 2).
+
+droga(X, Y) :- droga(X, Y, _).
+droga(X, Y) :- droga(Y, X, _).
+
+czas_przejazdu(X, Y, C) :- droga(X, Y, C).
+czas_przejazdu(X, Y, C) :- droga(Y, X, C).
+
+czas_przejazdu(X, Y, C) :-
+    droga(X, Z, T),
+    Z \== Y,
+    czas_przejazdu(Z, Y, T2),
+    C is T + T2.
+
+najkrotsza_trasa(X, Y) :-
+    setof((C, Trasa), droga_trasa(X, Y, Trasa, C), [(Koszt, NajkrotszaTrasa)|_]),
+    write('Najkrótsza trasa z '), write(X), write(' do '), write(Y), nl,
+    write('Trasa: '), write(NajkrotszaTrasa), nl,
+    write('Czas przejazdu: '), write(Koszt), write(' godzin'), nl.
+
+droga_trasa(X, Y, [X, Y], C) :- droga(X, Y, C).
+droga_trasa(X, Y, [X | Trasa], C) :-
+    droga(X, Z, Koszt),
+    Z \== Y, 
+    droga_trasa(Z, Y, Trasa, KosztRest),
+    C is Koszt + KosztRest.
