@@ -1,0 +1,29 @@
+% SWISH
+
+:- dynamic produkt/3.
+
+produkt(tv, 10, sektor_a).
+produkt(pralka, 5, sektor_b).
+produkt(lodowka, 3, sektor_c).
+
+dostepny_produkt(X) :-
+    produkt(X, Ilość, _), 
+    Ilość > 0.           
+
+przenies_produkt(X, Y) :-
+    produkt(X, Ilość, _),      
+    Ilość > 0,                
+    retract(produkt(X, Ilość, _)), 
+    assertz(produkt(X, Ilość, Y)), 
+    format('Produkt ~w został przeniesiony do sektora ~w.~n', [X, Y]).
+
+uzupelnij_stan(X, N) :-
+    produkt(X, Ilość, Sektor),  
+    !,                           
+    NowaIlość is Ilość + N,      
+    retract(produkt(X, Ilość, Sektor)), 
+    assertz(produkt(X, NowaIlość, Sektor)),
+    format('Produkt ~w został uzupełniony o ~w sztuk(i). Nowa ilość: ~w.~n', [X, N, NowaIlość]).
+uzupelnij_stan(X, N) :-
+    N > 0,                        
+    assertz(produkt(X, N, sektor_unknown)). 
