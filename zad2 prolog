@@ -1,1 +1,31 @@
+%  SWISH
 
+lotnisko(warszawa).
+lotnisko(krakow).
+lotnisko(gdansk).
+lotnisko(pozen).
+
+polaczenie(warszawa, krakow, 300).
+polaczenie(krakow, gdansk, 200).
+polaczenie(warszawa, gdansk, 500).
+polaczenie(warszawa, pozen, 150).
+polaczenie(pozen, gdansk, 400).
+
+polaczenie(X, Y) :- polaczenie(X, Y, _).
+polaczenie(X, Y) :- polaczenie(Y, X, _).
+
+koszt_podrozy(X, Y, C) :- polaczenie(X, Y, C).
+koszt_podrozy(X, Y, C) :- polaczenie(Y, X, C).
+
+najkrotsza_droga(X, Y) :-
+    setof((C, Trasa), droga(X, Y, Trasa, C), [(Koszt, NajkrotszaTrasa)|_]),
+    write('Najkrótsza droga z '), write(X), write(' do '), write(Y), nl,
+    write('Trasa: '), write(NajkrotszaTrasa), nl,
+    write('Koszt: '), write(Koszt), write(' PLN'), nl.
+
+droga(X, Y, [X, Y], C) :- polaczenie(X, Y, C).
+droga(X, Y, [X | Trasa], C) :-
+    polaczenie(X, Z, Koszt),
+    Z \== Y,
+    droga(Z, Y, Trasa, KosztRest),
+    C is Koszt + KosztRest.
