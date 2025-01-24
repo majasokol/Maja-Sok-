@@ -17,7 +17,7 @@ preferencje(uzytkownik1, fantasy).
 preferencje(uzytkownik1, przygodowa).
 
 polecane_ksiazki(X, Gatunek) :-
-    preferencje(X, Gatunek),  % Sprawdzamy, czy użytkownik preferuje ten gatunek
-    findall(Tytul, (ksiazka(Tytul, _, Gatunek), ocena(X, Tytul, Ocena), Ocena >= 4), Polecane),  % Zbieramy książki, które użytkownik ocenił na 4 lub więcej
-    write('Polecane książki dla użytkownika '), write(X), nl,  % Nagłówek
-    write(Polecane).  % Wypisanie polecanych książek
+    preferencje(X, Gatunek),
+    findall(Tytul, (ksiazka(Tytul, _, Gatunek), ocena(X, Tytul, Ocena), Ocena >= 4), Polecane),
+    write('Polecane książki dla użytkownika '), write(X), nl,
+    write(Polecane).
