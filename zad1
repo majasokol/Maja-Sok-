@@ -1,0 +1,25 @@
+% SWISH
+
+ojciec(jan, anna).
+ojciec(jan, piotr).
+matka(maria, anna).
+matka(maria, piotr).
+
+malzenstwo(jan, maria).
+
+mezczyzna(jan).
+mezczyzna(piotr).
+kobieta(maria).
+kobieta(anna).
+
+przodek(X, Y) :- ojciec(X, Y).
+przodek(X, Y) :- matka(X, Y).
+przodek(X, Y) :- ojciec(Z, Y), przodek(X, Z). % Poprawka: Zmieniono kolejność argumentów
+przodek(X, Y) :- matka(Z, Y), przodek(X, Z).  % Poprawka: Zmieniono kolejność argumentów
+
+brat(X, Y) :- ojciec(O, X), ojciec(O, Y), X \= Y, mezczyzna(X).
+
+siostra(X, Y) :- matka(M, X), matka(M, Y), X \= Y, kobieta(X).
+
+kuzyn(X, Y) :- ojciec(O1, X), ojciec(O2, Y), brat(O1, O2).
+kuzyn(X, Y) :- matka(M1, X), matka(M2, Y), siostra(M1, M2).
